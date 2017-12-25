@@ -4,7 +4,12 @@ import java.nio.ByteBuffer;
 
 import org.junit.Test;
 
-public class TestBuffer {
+/**
+ * 
+ * @author lzm
+ * @date 2017年12月25日
+ */
+public class BufferTest {
 	/**
 	 * nio 定义缓冲区，它们是数据容器
 	 * 
@@ -56,8 +61,9 @@ public class TestBuffer {
 		System.out.println(buffer.position());
 		buffer.reset();// 回到标记位置
 		System.out.println(buffer.position());
-		if (buffer.hasRemaining())
+		if (buffer.hasRemaining()) {
 			System.out.println(buffer.remaining());
+		}
 
 	}
 
@@ -65,47 +71,53 @@ public class TestBuffer {
 	public void test01() {
 		System.out.println("------allocate------");
 		int capacity = 1024;
-		ByteBuffer byteBuffer = ByteBuffer.allocate(capacity);// 分配容量
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
+		// 分配容量
+		ByteBuffer byteBuffer = ByteBuffer.allocate(capacity);
+		// 当前位置
+		System.out.println("position = " + byteBuffer.position());
+		// 大小限制
+		System.out.println("limit = " + byteBuffer.limit());
+		// 容量
+		System.out.println("capacity = " + byteBuffer.capacity());
 		System.out.println("------put------");
 		String str = "abcde";
 		byteBuffer.put(str.getBytes());
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
+		System.out.println("position = " + byteBuffer.position());
+		System.out.println("limit = " + byteBuffer.limit());
+		System.out.println("capacity = " + byteBuffer.capacity());
 		System.out.println("------flip------");
 		byteBuffer.flip();
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
+		System.out.println("position = " + byteBuffer.position());
+		System.out.println("limit = " + byteBuffer.limit());
+		System.out.println("capacity = " + byteBuffer.capacity());
 		byte[] b = new byte[byteBuffer.limit()];
 		byteBuffer.get(b);
 		System.out.println("------get------");
 		System.out.println(new String(b));
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
+		System.out.println("position = " + byteBuffer.position());
+		System.out.println("limit = " + byteBuffer.limit());
+		System.out.println("capacity = " + byteBuffer.capacity());
 
 		byte[] b1 = new byte[byteBuffer.limit()];
 		System.out.println("------rewind------");
-		byteBuffer.rewind(); // * 可重复读取
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
+		// * 可重复读取
+		byteBuffer.rewind();
+		System.out.println("position = " + byteBuffer.position());
+		System.out.println("limit = " + byteBuffer.limit());
+		System.out.println("capacity = " + byteBuffer.capacity());
 
 		byteBuffer.get(b1);
 		System.out.println(new String(b));
 		System.out.println("------get------");
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
-		byteBuffer.clear(); // * 属性恢复为初始位置，但是，数据依然存在
+		System.out.println("position = " + byteBuffer.position());
+		System.out.println("limit = " + byteBuffer.limit());
+		System.out.println("capacity = " + byteBuffer.capacity());
+		// * 属性恢复为初始位置，但是，数据依然存在
+		byteBuffer.clear();
 		System.out.println("------clear------");
-		System.out.println("position = " + byteBuffer.position());// 当前位置
-		System.out.println("limit = " + byteBuffer.limit());// 大小限制
-		System.out.println("capacity = " + byteBuffer.capacity());// 容量
+		System.out.println("position = " + byteBuffer.position());
+		System.out.println("limit = " + byteBuffer.limit());
+		System.out.println("capacity = " + byteBuffer.capacity());
 
 	}
 

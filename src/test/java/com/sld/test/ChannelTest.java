@@ -8,7 +8,11 @@ import java.nio.channels.FileChannel;
 
 import org.junit.Test;
 
-public class TestChannel {
+/**
+ * @author lzm
+ * @date 2017年12月25日
+ */
+public class ChannelTest {
 
 	/**
 	 * 根据流获取通道
